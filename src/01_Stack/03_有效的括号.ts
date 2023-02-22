@@ -1,4 +1,4 @@
-import { ArrayStack } from './1：实现栈结构'
+import { ArrayStack } from './01_实现栈结构'
 
 function isValid(s: string): boolean {
   if (s.length % 2 === 1) return false

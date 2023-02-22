@@ -8,7 +8,7 @@ export class ArrayStack<T> implements IStack<T> {
   pop(): T | undefined {
     return this.data.pop()
   }
-  peak() {
+  peek() {
     return this.data[this.data.length - 1]
   }
   isEmpty() {

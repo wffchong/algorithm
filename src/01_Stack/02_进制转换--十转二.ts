@@ -1,4 +1,4 @@
-import { ArrayStack } from './1：实现栈结构'
+import { ArrayStack } from './01_实现栈结构'
 
 function decimalToBinary(decimal: number): string {
   const stack = new ArrayStack<number>()
