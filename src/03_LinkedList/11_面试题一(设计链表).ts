@@ -1,3 +1,5 @@
+// 力扣 707 设计链表
+
 class MyLinkedList<T = any> {
   head: MyNode | null = null
   private size: number = 0
@@ -8,12 +10,15 @@ class MyLinkedList<T = any> {
 
   get(position: number): number {
     console.log('position', position)
-    console.log('lenght', this.length)
+    console.log('length', this.length)
     if (position < 0 || position >= this.length) return -1
     if(position === 0) return this.head?.value ?? -1
 
     let index = 0
     let current = this.head
+
+
+
     // 找到需要的position的位置的值
     while (index++ < position && current) {
       current = current.next
