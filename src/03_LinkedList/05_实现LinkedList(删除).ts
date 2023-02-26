@@ -72,6 +72,8 @@ class LinkedList<T> {
     return true
   }
 
+  // 1--> 6 --> 5--> 2 --> 2 -->
+
   removeAt(position: number): T | null {
     if (position < 0 || position >= this.size) return null
     let current = this.head
@@ -98,11 +100,8 @@ class LinkedList<T> {
 const linkedList = new LinkedList<string>()
 
 linkedList.append('aaa')
-linkedList.append('bbb')
-linkedList.append('ccc')
-linkedList.insert('ddd', 1)
-linkedList.insert('eee', 2)
 linkedList.traverse()
 linkedList.removeAt(0)
+linkedList.traverse()
 console.log('linkedList.removeAt(0)', linkedList.removeAt(0))
 export default {}
