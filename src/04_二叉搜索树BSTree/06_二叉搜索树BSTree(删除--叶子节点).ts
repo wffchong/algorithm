@@ -191,6 +191,40 @@ class BSTree<T> {
    * 3.当前删除的节点是其父节点的左还是右节点
    *
    */
+
+  /**
+   *
+   * @description 删除操作，获取后继节点，找到当前需要删除的右边的最接近的值，就是后继节点
+   * @private
+   * @memberof BSTree
+   */
+  private getSuccessor(delNode: TreeNode<T>): TreeNode<T> {
+    // 获取右子树
+    let current = delNode.right
+    let successor: TreeNode<T> | null = null
+
+    while (current) {
+      successor = current
+      current = current.left
+      // 保存后继节点的parent
+      if (current) {
+        current.parent = successor
+      }
+    }
+
+    // 拿到了后继节点
+    // 判断后继节点是不是刚好就是需要删除节点的右节点,（说明后面都没有左节点了）
+    if (successor !== delNode.right) {
+      successor!.parent!.left = successor?.right ?? null // 后继节点的left肯定为null，right可能为null
+      successor!.right = delNode.right
+    }
+
+    // 一定要进行的操作: 将删除节点的left, 赋值给后继节点的left
+    successor!.left = delNode.left
+
+    return successor!
+  }
+
   remove(value: T): boolean {
     // 1.搜索: 当前是否有这个value
     const current = this.searchNode(value)
@@ -236,6 +270,18 @@ class BSTree<T> {
         current.parent!.right = current.right
       }
     }
+    // 有两个子节点，这种情况就很复杂了，我们需要先找到当前的节点的前驱或者后继节点
+    else {
+      const successor = this.getSuccessor(current)
+
+      if (current === this.root) {
+        this.root = successor
+      } else if (current.isLeft) {
+        current.parent!.left = successor
+      } else {
+        current.parent!.right = successor
+      }
+    }
     return true
   }
 }
@@ -275,9 +321,15 @@ bst.print()
 // bst.remove(5)
 // bst.print()
 
-bst.remove(6)
+// bst.remove(6)
+// bst.print()
+// bst.remove(5)
+// bst.print()
+
+bst.remove(15)
 bst.print()
-bst.remove(5)
-bst.print()
+
+// bst.remove(20)
+// bst.print()
 
 export {}
