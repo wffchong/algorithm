@@ -157,6 +157,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hy-algokit@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/hy-algokit/-/hy-algokit-1.4.0.tgz#e55eaa25ab1da2f62fe2f7508c17aaf6e42af707"
+  integrity sha512-Eehnx7YS7VUzZsuntin9B2kolfIWYtPOsh922ZQ/ZUZxP1nUIWqIw2sna5lXpU5SzkOugeNdIDGN1sRnv3yeIw==
+
 is-core-module@^2.9.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.11.0.tgz#ad4cb3e3863e814523c96f3f58d26cc570ff0144"
