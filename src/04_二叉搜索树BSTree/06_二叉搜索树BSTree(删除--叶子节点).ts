@@ -202,12 +202,38 @@ class BSTree<T> {
       // 根节点
       if (current === this.root) {
         this.root = null
-        return true
         // 删除的是父节点的左边
       } else if (current.isLeft) {
         current.parent!.left = null
       } else {
         current.parent!.right = null
+      }
+    }
+
+    // 只有一个子节点，并且是左子节点
+    else if (current.left && !current.right) {
+      // 根节点
+      if (current === this.root) {
+        this.root = current.left
+        // 删除的是父节点的左边
+      } else if (current.isLeft) {
+        current.parent!.left = current.left
+      } else {
+        current.parent!.right = current.left
+      }
+    }
+
+    // 只有一个子节点，并且是右子节点
+    else if (!current.left && current.right) {
+      // 根节点
+      if (current === this.root) {
+        this.root = current.right
+        return true
+        // 删除的是父节点的左边
+      } else if (current.isLeft) {
+        current.parent!.left = current.right
+      } else {
+        current.parent!.right = current.right
       }
     }
     return true
@@ -239,7 +265,19 @@ bst.print()
 // bst.levelOrderTraverse()
 // console.log('bst.getMaxValue()', bst.getMaxValue())
 // console.log('bst.getMinValue()', bst.getMinValue())
-console.log('bst.search(100)', bst.search(100))
-console.log('bst.search(25)', bst.search(25))
+// console.log('bst.search(100)', bst.search(100))
+// console.log('bst.search(25)', bst.search(25))
+// console.log('bst.remove(3)', bst.remove(3))
+// bst.print()
+
+// bst.remove(3)
+// bst.print()
+// bst.remove(5)
+// bst.print()
+
+bst.remove(6)
+bst.print()
+bst.remove(5)
+bst.print()
 
 export {}
