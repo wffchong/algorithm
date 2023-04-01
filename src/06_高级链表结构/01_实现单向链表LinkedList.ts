@@ -16,7 +16,7 @@ export default class LinkedList<T> implements ILinkedList<T> {
     return this.head?.value
   }
 
-  private getNode(position: number): Node<T> | null {
+  protected getNode(position: number): Node<T> | null {
     let index = 0
     let current = this.head
     while (index++ < position && current) {
