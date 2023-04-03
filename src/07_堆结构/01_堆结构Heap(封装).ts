@@ -22,3 +22,5 @@ class Heap<T> {
 
   buildHeap(arr: T[]) {}
 }
+
+export {}
