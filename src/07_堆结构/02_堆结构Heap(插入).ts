@@ -65,6 +65,4 @@ console.log(heap.data)
 heap.insert(65)
 console.log(heap.data)
 
-console.log(heap.extract())
-
 export {}

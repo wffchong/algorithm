@@ -43,10 +43,10 @@ class Student {
 
 const priorityQueue = new PriorityQueue()
 
-priorityQueue.enqueue(new Student('why', 99))
-priorityQueue.enqueue(new Student('kobe', 89))
-priorityQueue.enqueue(new Student('james', 95))
-priorityQueue.enqueue(new Student('curry', 88))
+priorityQueue.enqueue(new Student('aaa', 99))
+priorityQueue.enqueue(new Student('bbb', 89))
+priorityQueue.enqueue(new Student('ccc', 95))
+priorityQueue.enqueue(new Student('ddd', 88))
 
 while (!priorityQueue.isEmpty()) {
   console.log(priorityQueue.dequeue())

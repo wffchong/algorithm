@@ -35,11 +35,13 @@ class Heap<T> {
   // 下滤
   percolate_down() {
     let index = 0
+    // 左子节点存在
     while (index * 2 + 1 < this.length) {
       const leftChildIndex = index * 2 + 1
       const rightChildIndex = index * 2 + 2
       // 判断左边和右边那个节点的值比较大
       let largeChildIndex = leftChildIndex
+      // 右子节点存在,并且右边大于左边
       if (rightChildIndex < this.length && this.data[leftChildIndex] < this.data[rightChildIndex]) {
         largeChildIndex = rightChildIndex
       }

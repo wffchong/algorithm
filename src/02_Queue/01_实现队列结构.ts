@@ -1,4 +1,10 @@
-import { IQueue } from './IQueue'
+export interface IQueue<T> {
+  enqueue: (element: T) => void
+  dequeue: () => T | undefined
+  peek: () => T | undefined
+  isEmpty: () => boolean
+  size: () => number
+}
 
 export class ArrayQueue<T> implements IQueue<T> {
   protected data: Array<T> = []
