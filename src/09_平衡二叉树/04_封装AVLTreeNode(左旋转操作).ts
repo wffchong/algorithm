@@ -1,6 +1,6 @@
 import { TreeNode } from './00_二叉搜索树BSTree'
 
-class AVLTreeNode<T> extends TreeNode<T> {
+export class AVLTreeNode<T> extends TreeNode<T> {
   // 保证获取到的left/right节点的类型是AVLTreeNode
   left: AVLTreeNode<T> | null = null
   right: AVLTreeNode<T> | null = null
@@ -33,7 +33,7 @@ class AVLTreeNode<T> extends TreeNode<T> {
     return Math.abs(factor) <= 1
   }
 
-  private get higherChild(): AVLTreeNode<T> | null {
+  public get higherChild(): AVLTreeNode<T> | null {
     const leftHeight = this.left ? this.left.getHeight() : 0
     const rightHeight = this.right ? this.right.getHeight() : 0
 
