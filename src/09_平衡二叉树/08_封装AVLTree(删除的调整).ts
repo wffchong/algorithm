@@ -60,8 +60,19 @@ class AVLTree<T> extends BSTree<T> {
 
 const avlTree = new AVLTree<number>()
 
-for (let i = 0; i < 20; i++) {
-  avlTree.insert(Math.floor(Math.random() * 200))
-}
+// for (let i = 0; i < 20; i++) {
+//   avlTree.insert(Math.floor(Math.random() * 200))
+// }
 
+avlTree.insert(50)
+avlTree.insert(25)
+avlTree.insert(100)
+avlTree.insert(150)
+avlTree.insert(12)
+
+avlTree.print()
+
+// avlTree.remove(25)
+avlTree.remove(12)
+avlTree.remove(50)
 avlTree.print()

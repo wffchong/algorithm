@@ -237,8 +237,17 @@ export class BSTree<T> {
     // 拿到了后继节点
     // 判断后继节点是不是刚好就是需要删除节点的右节点,（说明后面都没有左节点了）
     if (successor !== delNode.right) {
-      successor!.parent!.left = successor?.right ?? null // 后继节点的left肯定为null，right可能为null
-      successor!.right = delNode.right
+      // successor!.parent!.left = successor?.right ?? null // 后继节点的left肯定为null，right可能为null
+      // successor!.right = delNode.right
+      successor!.parent!.left = successor!.right
+      if (successor?.right) {
+        successor.right.parent = successor.parent
+      }
+    } else {
+      delNode.right = successor!.right
+      if (successor!.right) {
+        successor!.right.parent = delNode
+      }
     }
 
     // 一定要进行的操作: 将删除节点的left, 赋值给后继节点的left
@@ -270,7 +279,14 @@ export class BSTree<T> {
     } else {
       // 有两个子节点，这种情况就很复杂了，我们需要先找到当前的节点的前驱或者后继节点
       const successor = this.getSuccessor(current)
-      replaceNode = successor
+      // replaceNode = successor
+      // 把后继节点的值覆盖为current的值
+      current.value = successor.value
+
+      // 处理完后再把 successor 删掉即可，然后在检查删掉的 delNode
+      delNode = successor
+      this.checkBalance(delNode)
+      return true
     }
 
     if (current === this.root) {
