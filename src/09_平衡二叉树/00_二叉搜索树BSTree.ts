@@ -27,7 +27,7 @@ export class TreeNode<T> extends Node<T> {
   }
 }
 
-class BSTree<T> {
+export class BSTree<T> {
   private root: TreeNode<T> | null = null
 
   print() {
