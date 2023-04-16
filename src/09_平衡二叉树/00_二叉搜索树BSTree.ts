@@ -59,10 +59,18 @@ export class BSTree<T> {
     return null
   }
 
+  // 创建节点
+  protected createNode(value: T): TreeNode<T> {
+    return new TreeNode(value)
+  }
+
+  // 让子类重写就好
+  protected checkBalance(node: TreeNode<T>) {}
+
   // 插入
   insert(value: T) {
     // 1.根据传入value创建Node(TreeNode)节点
-    const newNode = new TreeNode(value)
+    const newNode = this.createNode(value)
 
     // 2.判断当前是否已经有了根节点
     if (!this.root) {
@@ -70,6 +78,9 @@ export class BSTree<T> {
     } else {
       this.insertNode(this.root, newNode)
     }
+
+    // 检查树是否平衡
+    this.checkBalance(newNode)
   }
 
   // 插入
@@ -78,6 +89,8 @@ export class BSTree<T> {
       // node 的左边没有值
       if (node.left === null) {
         node.left = newNode
+        // 处理下父节点
+        newNode.parent = node
       } else {
         // node 的左边已经有值了
         this.insertNode(node.left, newNode)
@@ -86,6 +99,8 @@ export class BSTree<T> {
       // node 的右边没有值
       if (node.right === null) {
         node.right = newNode
+        // 处理下父节点
+        newNode.parent = node
       } else {
         // node 的右边已经有值了
         this.insertNode(node.right, newNode)

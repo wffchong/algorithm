@@ -1,7 +1,22 @@
-import { BSTree } from './00_二叉搜索树BSTree'
+import { BSTree, TreeNode } from './00_二叉搜索树BSTree'
 import { AVLTreeNode } from './04_封装AVLTreeNode(左旋转操作)'
 
 class AVLTree<T> extends BSTree<T> {
+  protected createNode(value: T): AVLTreeNode<T> {
+    return new AVLTreeNode(value)
+  }
+
+  // 检测树是否平衡
+  protected checkBalance(node: AVLTreeNode<T>): void {
+    let current = node.parent
+    while (current) {
+      if (!current.isBalanced) {
+        this.reBalance(current)
+      }
+      current = current.parent
+    }
+  }
+
   // 到时候用不平衡的节点调用一下再平衡方法就好了
 
   /**
@@ -45,13 +60,8 @@ class AVLTree<T> extends BSTree<T> {
 
 const avlTree = new AVLTree<number>()
 
-avlTree.insert(10)
-avlTree.insert(15)
-avlTree.insert(20)
-// avlTree.insert(5)
-// avlTree.insert(8)
+for (let i = 0; i < 20; i++) {
+  avlTree.insert(Math.floor(Math.random() * 200))
+}
 
 avlTree.print()
-
-// avlTree.remove(15)
-// avlTree.print()
