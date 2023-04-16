@@ -1,6 +1,13 @@
-import Node from './types/Node'
+// import Node from './types/Node'
 
 import { btPrint } from 'hy-algokit'
+
+class Node<T> {
+  value: T
+  constructor(value: T) {
+    this.value = value
+  }
+}
 
 export class TreeNode<T> extends Node<T> {
   left: TreeNode<T> | null = null
