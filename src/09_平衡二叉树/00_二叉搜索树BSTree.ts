@@ -253,6 +253,9 @@ export class BSTree<T> {
 
     if (!current) return false
 
+    // search 到的这个节点就是 delNode
+    let delNode: TreeNode<T> = current
+
     let replaceNode: TreeNode<T> | null = null
 
     // 删除叶子节点
@@ -277,6 +280,16 @@ export class BSTree<T> {
     } else {
       current.parent!.right = replaceNode
     }
+
+    // 判断 replaceNode 是否有值，没值的话就是删除叶子节点，不需要管
+    // 如果只有一个子节点，那么就需要把子节点的父引用设置到删除节点的父节点上
+    if (replaceNode && current.parent) {
+      replaceNode.parent = current.parent
+    }
+
+    // 删除之后需要保持树平衡
+    this.checkBalance(delNode)
+
     return true
   }
 }
