@@ -65,7 +65,7 @@ export class BSTree<T> {
   }
 
   // 让子类重写就好
-  protected checkBalance(node: TreeNode<T>) {}
+  protected checkBalance(node: TreeNode<T>, isAdd = true) {}
 
   // 插入
   insert(value: T) {
@@ -285,7 +285,7 @@ export class BSTree<T> {
 
       // 处理完后再把 successor 删掉即可，然后在检查删掉的 delNode
       delNode = successor
-      this.checkBalance(delNode)
+      this.checkBalance(delNode, false)
       return true
     }
 
@@ -304,7 +304,7 @@ export class BSTree<T> {
     }
 
     // 删除之后需要保持树平衡
-    this.checkBalance(delNode)
+    this.checkBalance(delNode, false)
 
     return true
   }

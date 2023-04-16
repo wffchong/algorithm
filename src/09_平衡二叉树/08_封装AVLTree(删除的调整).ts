@@ -7,11 +7,16 @@ class AVLTree<T> extends BSTree<T> {
   }
 
   // 检测树是否平衡
-  protected checkBalance(node: AVLTreeNode<T>): void {
+  protected checkBalance(node: AVLTreeNode<T>, isAdd = true): void {
     let current = node.parent
     while (current) {
       if (!current.isBalanced) {
         this.reBalance(current)
+        // 这个位置是旋转完成后的操作
+        // break决定不会进一步去查找父节点有没有平衡的情况了
+        // 添加的情况是不需要进一步向上查找的, 直接break
+        // 删除的情况是需要进一步向上查找的, 不能break
+        if (isAdd) break
       }
       current = current.parent
     }
