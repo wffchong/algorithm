@@ -99,7 +99,7 @@ class Heap<T> {
     this.length = arr.length
 
     // 找到第一个非叶子节点 ，也就是最后一个节点的父节点
-    const start = Math.floor((this.length - 1) / 2)
+    const start = Math.floor(this.length / 2 - 1)
 
     // 然后循环下虑
     for (let i = start; i >= 0; i--) {
