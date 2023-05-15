@@ -6,4 +6,6 @@ function fib(n: number): number {
   return fib(n - 1) + fib(n - 2)
 }
 
-console.log('fib(5)', fib(10))
+console.log('fib(5)', fib(6))
+
+export {}
