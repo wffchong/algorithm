@@ -1,5 +1,7 @@
 function maxProfit(prices: number[]): number {
   const n = prices.length
+
+  if (n <= 1) return 0
   let preValue = 0
 
   let minPrice = prices[0]
